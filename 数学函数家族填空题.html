@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>数学函数填空题</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            padding: 15px;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            width: 100px;
+            padding: 5px;
+            margin: 2px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+        .feedback {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>数学函数填空题</h1>
+        
+        <div class="question">
+            <p>1. 一次函数是指X的一次，如果X=0，则违背一次函数的定义。表达式是y=<input type="text" id="q1">。</p>
+        </div>
+
+        <div class="question">
+            <p>2. 一次函数的图像是一条<input type="text" id="q2">的样子。</p>
+        </div>
+
+        <div class="question">
+            <p>3. 正比例函数与一次函数的不同点是一次函数有<input type="text" id="q3">。</p>
+        </div>
+
+        <div class="question">
+            <p>4. 正比例函数的图像是一条过<input type="text" id="q4">的直线。</p>
+        </div>
+
+        <div class="question">
+            <p>5. 正比例函数的表达式是y=<input type="text" id="q5">。</p>
+        </div>
+
+        <div class="question">
+            <p>6. 如果k>0，正比例函数的直线过一、<input type="text" id="q6">象限。</p>
+        </div>
+
+        <div class="question">
+            <p>7. 反比例函数指的是xy=k，其中的x、y、k都不能等于<input type="text" id="q7">。</p>
+        </div>
+
+        <div class="question">
+            <p>8. 如果k>0，反比例函数的图像是过一、<input type="text" id="q8">象限的双曲线。</p>
+        </div>
+
+        <div class="question">
+            <p>9. 三角函数中，sin叫正弦=对边除以<input type="text" id="q9">。</p>
+        </div>
+
+        <div class="question">
+            <p>10. 三角函数中，cos叫余弦=邻边除以<input type="text" id="q10">。</p>
+        </div>
+
+        <div class="question">
+            <p>11. 三角函数中，tan叫正切=对边除以<input type="text" id="q11">。</p>
+        </div>
+
+        <div class="question">
+            <p>12. 在锐角三角形中，tan的值就是<input type="text" id="q12">。</p>
+        </div>
+
+        <button onclick="checkAnswers()">提交答案</button>
+
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: "kx+b",
+                q2: "直线",
+                q3: "b",
+                q4: "原点",
+                q5: "kx",
+                q6: "三",
+                q7: "0",
+                q8: "三",
+                q9: "斜边",
+                q10: "斜边",
+                q11: "邻边",
+                q12: "坡度"
+            };
+
+            let correctCount = 0;
+            let feedback = "";
+
+            for (let key in answers) {
+                const userAnswer = document.getElementById(key).value.trim();
+                const correctAnswer = answers[key];
+
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    feedback += `问题 ${key.slice(1)}: 正确<br>`;
+                } else {
+                    feedback += `问题 ${key.slice(1)}: 错误。正确答案是: ${correctAnswer}<br>`;
+                }
+            }
+
+            feedback = `你答对了 ${correctCount} 题，总共 ${Object.keys(answers).length} 题。<br><br>` + feedback;
+            document.getElementById("feedback").innerHTML = feedback;
+        }
+    </script>
+</body>
+</html>
